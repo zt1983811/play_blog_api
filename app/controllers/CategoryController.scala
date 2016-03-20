@@ -31,7 +31,7 @@ class CategoryController extends Controller {
       categoryData => {
         val now = new DateTime()
         val category = Category(0, categoryData.title, categoryData.description, 1, now, now)
-        CategoryService.addCategory(category).map(response => Ok(JsObject("content" -> JsString(response) :: Nil)))
+        CategoryService.addCategory(category).map(response => Created(JsObject("content" -> JsString(response) :: Nil)))
       })
   }
 

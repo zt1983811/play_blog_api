@@ -31,7 +31,7 @@ class PostController extends Controller {
       postData => {
         val now = new DateTime()
         val post = Post(0, postData.title, postData.content, 1, now, now)
-        PostService.addPost(post).map(response => Ok(JsObject("content" -> JsString(response) :: Nil)))
+        PostService.addPost(post).map(response => Created(JsObject("content" -> JsString(response) :: Nil)))
       })
   }
 
