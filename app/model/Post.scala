@@ -58,6 +58,12 @@ object Posts {
     dbConfig.db.run(posts.filter(_.id === id).result.headOption)
   }
 
+  def update(post: Post): Future[Int] = {
+    dbConfig.db.run(posts.filter(_.id === post.id)
+        .map(x=> (x.title,x.content,x.updateDate))
+        .update((post.title,post.content,post.updateDate)))
+  }
+
   def listAll: Future[Seq[Post]] = {
     dbConfig.db.run(posts.result)
   }

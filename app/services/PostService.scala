@@ -21,4 +21,8 @@ object PostService {
     Posts.listAll
   }
   
+  def updatePost(post: Post) : Future[Int] = {
+    Posts.update(post)
+  }
+  
 }

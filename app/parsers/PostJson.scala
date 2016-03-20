@@ -10,7 +10,12 @@ object PostJson {
       "id" -> JsNumber(post.id) ::
       "title" -> JsString(post.title) ::
       "content" -> JsString(post.content) ::
-      "date_created" -> JsString(post.createDate.toString()):: Nil)
+      "date_created" -> JsString(post.createDate.toString()):: 
+      "date_updated" -> JsString(post.updateDate.toString())::Nil)
+  }
+  
+  def parseLists(posts: List[Post]) : JsValue = {
+    JsObject("posts" -> JsArray(posts.map{ post => parseSingle(post) }) ::Nil)
   }
 
 }
